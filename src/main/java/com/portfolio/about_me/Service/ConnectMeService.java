@@ -8,7 +8,7 @@ import java.util.List;
 public interface ConnectMeService {
 
     List<ConnectionMeResponse> getAllConnection();
-    boolean addConnection(ConnectMeSaveDto saveDto);
-    boolean updateConnectionById(ConnectMeSaveDto saveDto, int id);
+    ConnectionMeResponse addConnection(ConnectMeSaveDto saveDto);
+    ConnectionMeResponse updateConnectionById(ConnectMeSaveDto saveDto, int id);
     boolean deleteConnectionById(int id);
 }

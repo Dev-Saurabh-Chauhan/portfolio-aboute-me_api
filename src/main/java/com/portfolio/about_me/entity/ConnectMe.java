@@ -7,7 +7,7 @@ public class ConnectMe {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Column(nullable = false, unique = true)
-    private int connectionName;
+    private String connectionName;
     private String link;
 
     public int getId() {
@@ -18,11 +18,11 @@ public class ConnectMe {
         this.id = id;
     }
 
-    public int getConnectionName() {
+    public String getConnectionName() {
         return connectionName;
     }
 
-    public void setConnectionName(int connectionName) {
+    public void setConnectionName(String connectionName) {
         this.connectionName = connectionName;
     }
 

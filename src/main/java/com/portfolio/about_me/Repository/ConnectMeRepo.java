@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ConnectMeRepo extends JpaRepository<ConnectMe, Integer> {
+    ConnectMe findById(int id);
 }

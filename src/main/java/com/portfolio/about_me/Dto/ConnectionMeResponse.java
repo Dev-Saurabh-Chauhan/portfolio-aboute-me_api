@@ -2,14 +2,15 @@ package com.portfolio.about_me.Dto;
 
 public class ConnectionMeResponse {
 
-    private int connectionName;
+    private int id;
+    private String connectionName;
     private String link;
 
-    public int getConnectionName() {
+    public String getConnectionName() {
         return connectionName;
     }
 
-    public void setConnectionName(int connectionName) {
+    public void setConnectionName(String connectionName) {
         this.connectionName = connectionName;
     }
 
@@ -19,5 +20,13 @@ public class ConnectionMeResponse {
 
     public void setLink(String link) {
         this.link = link;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
