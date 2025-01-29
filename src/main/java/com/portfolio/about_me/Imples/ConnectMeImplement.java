@@ -5,6 +5,7 @@ import com.portfolio.about_me.Dto.ConnectionMeResponse;
 import com.portfolio.about_me.Repository.ConnectMeRepo;
 import com.portfolio.about_me.Service.ConnectMeService;
 import com.portfolio.about_me.entity.ConnectMe;
+import com.portfolio.about_me.exceptions.DataNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,10 +36,7 @@ public class ConnectMeImplement implements ConnectMeService {
 
     @Override
     public ConnectionMeResponse updateConnectionById(ConnectMeSaveDto saveDto, int id) {
-        ConnectMe connectMe = this.connectMeRepo.findById(id);
-        if (connectMe == null) {
-            return null;
-        }
+        ConnectMe connectMe = this.connectMeRepo.findById(id).orElseThrow(() -> new DataNotFoundException("No data found with Id: " + id));
         connectMe.setLink(saveDto.getLink());
         connectMe.setConnectionName(saveDto.getConnectionName());
         ConnectMe updatedData = this.connectMeRepo.save(connectMe);
@@ -47,13 +45,8 @@ public class ConnectMeImplement implements ConnectMeService {
 
     @Override
     public boolean deleteConnectionById(int id) {
-        ConnectMe connectMe = this.connectMeRepo.findById(id);
-        if (connectMe != null) {
-            this.connectMeRepo.deleteById(id);
-            return true;
-        } else {
-            return false;
-        }
-
+        this.connectMeRepo.findById(id).orElseThrow(() -> new DataNotFoundException("No data found with Id: " + id));
+        this.connectMeRepo.deleteById(id);
+        return true;
     }
 }
