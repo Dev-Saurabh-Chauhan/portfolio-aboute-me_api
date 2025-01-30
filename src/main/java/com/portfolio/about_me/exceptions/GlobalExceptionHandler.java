@@ -43,10 +43,4 @@ public class GlobalExceptionHandler {
         ApiResponse<Boolean> response = new ApiResponse<>(400, null, ex.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
     }
-
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<ApiResponse<Boolean>> handleGeneralException(Exception ex) {
-        ApiResponse<Boolean> response = new ApiResponse<>(501, null, "An error occurred while processing your request.");
-        return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(response);
-    }
 }

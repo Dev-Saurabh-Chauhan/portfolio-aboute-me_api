@@ -10,7 +10,7 @@ import lombok.Setter;
 @Entity
 public class AboutMe {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @Column(nullable = false, length = 30)
